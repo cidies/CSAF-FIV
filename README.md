@@ -405,7 +405,7 @@ Zentric also develops **Redsight**, a portfolio of cybersecurity solutions suppo
 Learn more:
 
 - Zentric: https://www.zentric.com
-- Redsight: https://www.zentric.com
+- Redsight: https://www.zentric.ch
 
 This project is made available to the community as a lightweight, independent open-source utility.
 

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DEMO-2026-006: [TEST DATA] Example operator panel access configuration</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.5; margin: 0; color: #2c2c2c; background: #f5f5f5; }
+    main { max-width: 1000px; margin: 24px auto; padding: 24px; background: white; border: 1px solid #ddd; }
+    h1 { border-left: 4px solid #007da8; padding-left: 15px; overflow-wrap: anywhere; }
+    a { color: #007da8; }
+    dl { display: grid; grid-template-columns: minmax(140px, 1fr) 3fr; gap: 8px 16px; }
+    dt { font-weight: bold; } dd { margin: 0; overflow-wrap: anywhere; }
+    p { white-space: pre-wrap; } table { width: 100%; border-collapse: collapse; }
+    th, td { text-align: left; padding: 10px; border-bottom: 1px solid #ddd; }
+    .table-wrap { overflow-x: auto; } pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+    code { overflow-wrap: anywhere; } article { border-top: 1px solid #ddd; padding-top: 16px; }
+    @media (max-width: 600px) { main { margin: 8px; padding: 16px; } dl { display: block; } dd { margin-bottom: 12px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <nav><a href="../index.html">Advisory index</a> | <a href="./demo-panel.json">Original CSAF JSON</a></nav>
+    <h1>DEMO-2026-006: [TEST DATA] Example operator panel access configuration</h1>
+    <dl><dt>Document ID</dt><dd>DEMO-2026-006</dd>
+<dt>Publisher</dt><dd>Fictional Demo Vendor</dd>
+<dt>Document category</dt><dd>csaf_security_advisory</dd>
+<dt>CSAF version</dt><dd>2.0</dd>
+<dt>Initial release date</dt><dd>2026-10-13T15:00:00Z</dd>
+<dt>Current release date</dt><dd>2026-10-16T15:00:00Z</dd>
+<dt>Current version</dt><dd>2.0.0</dd>
+<dt>Status</dt><dd>final</dd>
+<dt>TLP</dt><dd>WHITE</dd>
+<dt>Aggregate severity</dt><dd>Medium</dd>
+<dt>Language</dt><dd>en</dd>
+<dt>Contact</dt><dd>Fictional contact for demonstration: security@example.com (not monitored).</dd></dl>
+    <section><h2>Summary</h2><p>Demo Operator Panel P600 versions 1.0.0 and 1.1.0 are affected by a fictional improper neutralization of input during web page generation issue. Version 1.2.0 contains the simulated fix; the separate 2.0.0 branch is not affected.</p></section>
+<section><h2>Technical overview</h2><p>The fictional web interface displays a stored operator label without context-appropriate output encoding. An authenticated operator viewing the affected page may expose browser-visible information or allow unintended interface actions. The issue is intentionally described without executable attack instructions or payloads.</p></section>
+<section><h2>General recommendations</h2><p>For this demonstration, inventory the deployed version, restrict management access, back up configuration, and schedule the update to 1.2.0. Validate normal operation after updating. Restrict label editing to trusted administrators and avoid displaying unreviewed labels until updated.</p></section>
+<section><h2>Are these real vulnerabilities?</h2><p>No. All products, issue identifiers, release versions, impact statements, and scores are synthetic. No real CVE identifiers are assigned. The example.com references illustrate the document structure and are not working support or download endpoints.</p></section>
+<section><h2>Test data disclaimer</h2><p>This document is provided solely for testing CSAF processing and human-readable display. Do not treat it as evidence that any real product is vulnerable or use it as operational security guidance.</p></section>
+    <section><h2>Product inventory</h2><div class="table-wrap"><table>
+      <thead><tr><th>Product and version</th><th>Product ID</th></tr></thead>
+      <tbody><tr><td>Demo Operator Panel P600 1.0.0</td><td>DEMO-2026-006-1.0.0</td></tr>
+<tr><td>Demo Operator Panel P600 1.1.0</td><td>DEMO-2026-006-1.1.0</td></tr>
+<tr><td>Demo Operator Panel P600 1.2.0</td><td>DEMO-2026-006-1.2.0</td></tr>
+<tr><td>Demo Operator Panel P600 2.0.0</td><td>DEMO-2026-006-2.0.0</td></tr></tbody></table></div></section>
+    <section><h2>Vulnerabilities</h2><article>
+      <h3>[TEST DATA] Improper Neutralization of Input During Web Page Generation in Demo Operator Panel P600</h3>
+      
+      <p>Fictional Demo Vendor issue tracker: DEMO-2026-006-ISSUE-01</p>
+      <p>CWE-79: Improper Neutralization of Input During Web Page Generation</p>
+      <p>Discovery: 2026-10-06T15:00:00Z</p>
+      <p>Disclosure: 2026-10-13T15:00:00Z</p>
+      <section><h4>Issue summary</h4><p>The fictional web interface displays a stored operator label without context-appropriate output encoding.</p></section>
+<section><h4>Scope and prerequisites</h4><p>A user must view the affected web page; the CVSS user-interaction metric is Required. Only versions 1.0.0 and 1.1.0 are covered by the affected status. The 2.0.0 branch uses a different implementation and is not affected.</p></section>
+      <h4>Product status</h4><div class="table-wrap"><table>
+        <thead><tr><th>Status</th><th>Products</th></tr></thead><tbody><tr><td>known affected</td><td>Demo Operator Panel P600 1.0.0, Demo Operator Panel P600 1.1.0</td></tr>
+<tr><td>fixed</td><td>Demo Operator Panel P600 1.2.0</td></tr>
+<tr><td>known not affected</td><td>Demo Operator Panel P600 2.0.0</td></tr></tbody></table></div>
+      <h4>Status justification</h4><ul><li>vulnerable code not present: Demo Operator Panel P600 2.0.0</li></ul>
+      <h4>CVSS scores</h4><ul><li>Demo Operator Panel P600 1.0.0, Demo Operator Panel P600 1.1.0: <strong>6.1 (MEDIUM)</strong>
+        <br>CVSS 3.1: <code>CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N</code></li></ul>
+      <h4>Impact and exploitation status</h4><ul><li><strong>impact</strong>: An authenticated operator viewing the affected page may expose browser-visible information or allow unintended interface actions.
+        <br>Products: Demo Operator Panel P600 1.0.0, Demo Operator Panel P600 1.1.0</li>
+<li><strong>exploit status</strong>: Synthetic example only. No real exploit, incident, or exploitation in the wild is asserted.
+        <br>Products: Demo Operator Panel P600 1.0.0, Demo Operator Panel P600 1.1.0</li></ul>
+      <h4>Remediations</h4><section><h4>vendor fix</h4>
+        <p>In this fictional scenario, update Demo Operator Panel P600 from 1.0.0 or 1.1.0 to 1.2.0 during a maintenance window. Back up configuration, verify the installed version after the update, and confirm normal operation. The linked URL is a placeholder, not a download service.</p>
+        <p>Products: Demo Operator Panel P600 1.0.0, Demo Operator Panel P600 1.1.0</p>
+        <p>Available since: 2026-10-16T15:00:00Z</p>
+        <p>Restart: machine.
+          A simulated device or application restart is required after the update.</p>
+        <a href="https://example.com/csaf/demo-panel/release-1.2.0">Remediation reference (example placeholder)</a>
+      </section>
+<section><h4>workaround</h4>
+        <p>Restrict label editing to trusted administrators and avoid displaying unreviewed labels until updated. This reduces exposure but does not replace the fictional software fix.</p>
+        <p>Products: Demo Operator Panel P600 1.0.0, Demo Operator Panel P600 1.1.0</p>
+        
+        
+        
+      </section>
+<section><h4>mitigation</h4>
+        <p>Restrict service access to trusted networks, monitor unexpected service activity, and review administrative access until the simulated update is complete.</p>
+        <p>Products: Demo Operator Panel P600 1.0.0, Demo Operator Panel P600 1.1.0</p>
+        
+        
+        
+      </section>
+      <h3>References</h3><ul><li><a href="https://example.com/csaf/demo-panel/issue-01">Synthetic issue record (placeholder only)</a></li></ul>
+    </article></section>
+    <h3>References</h3><ul><li><a href="https://example.com/csaf/demo-panel">Fictional advisory reference (placeholder only)</a></li><li><a href="https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.html">CSAF 2.0 specification</a></li><li><a href="https://cwe.mitre.org/data/definitions/79.html">Weakness classification used for this synthetic example</a></li></ul>
+    <section><h2>Acknowledgments</h2><ul><li>Fictional Demo Research Team: Demo Researcher
+      Synthetic contributor attribution; no real vulnerability research is claimed.</li></ul></section>
+    <section><h2>Revision history</h2><div class="table-wrap"><table>
+      <thead><tr><th>Version</th><th>Date</th><th>Summary</th></tr></thead>
+      <tbody><tr><td>1.0.0</td><td>2026-10-13T15:00:00Z</td><td>Initial synthetic advisory with preliminary affected-version information.</td></tr>
+<tr><td>2.0.0</td><td>2026-10-16T15:00:00Z</td><td>Added fixed and unaffected versions, product-specific scoring, remediation, and demonstration disclaimers.</td></tr></tbody>
+    </table></div></section>
+    <details><summary>Complete CSAF document</summary><pre>{
+  &quot;document&quot;: {
+    &quot;category&quot;: &quot;csaf_security_advisory&quot;,
+    &quot;csaf_version&quot;: &quot;2.0&quot;,
+    &quot;title&quot;: &quot;[TEST DATA] Example operator panel access configuration&quot;,
+    &quot;publisher&quot;: {
+      &quot;category&quot;: &quot;vendor&quot;,
+      &quot;name&quot;: &quot;Fictional Demo Vendor&quot;,
+      &quot;namespace&quot;: &quot;https://example.com&quot;,
+      &quot;contact_details&quot;: &quot;Fictional contact for demonstration: security@example.com (not monitored).&quot;,
+      &quot;issuing_authority&quot;: &quot;Fictional Demo Vendor publishes this synthetic advisory solely to demonstrate CSAF 2.0 distribution and rendering.&quot;
+    },
+    &quot;distribution&quot;: {
+      &quot;tlp&quot;: {
+        &quot;label&quot;: &quot;WHITE&quot;
+      },
+      &quot;text&quot;: &quot;Public synthetic example; not a real security advisory. No vendor, product, or incident described here exists.&quot;
+    },
+    &quot;notes&quot;: [
+      {
+        &quot;category&quot;: &quot;summary&quot;,
+        &quot;title&quot;: &quot;Summary&quot;,
+        &quot;text&quot;: &quot;Demo Operator Panel P600 versions 1.0.0 and 1.1.0 are affected by a fictional improper neutralization of input during web page generation issue. Version 1.2.0 contains the simulated fix; the separate 2.0.0 branch is not affected.&quot;
+      },
+      {
+        &quot;category&quot;: &quot;description&quot;,
+        &quot;title&quot;: &quot;Technical overview&quot;,
+        &quot;text&quot;: &quot;The fictional web interface displays a stored operator label without context-appropriate output encoding. An authenticated operator viewing the affected page may expose browser-visible information or allow unintended interface actions. The issue is intentionally described without executable attack instructions or payloads.&quot;
+      },
+      {
+        &quot;category&quot;: &quot;general&quot;,
+        &quot;title&quot;: &quot;General recommendations&quot;,
+        &quot;text&quot;: &quot;For this demonstration, inventory the deployed version, restrict management access, back up configuration, and schedule the update to 1.2.0. Validate normal operation after updating. Restrict label editing to trusted administrators and avoid displaying unreviewed labels until updated.&quot;
+      },
+      {
+        &quot;category&quot;: &quot;faq&quot;,
+        &quot;title&quot;: &quot;Are these real vulnerabilities?&quot;,
+        &quot;text&quot;: &quot;No. All products, issue identifiers, release versions, impact statements, and scores are synthetic. No real CVE identifiers are assigned. The example.com references illustrate the document structure and are not working support or download endpoints.&quot;
+      },
+      {
+        &quot;category&quot;: &quot;legal_disclaimer&quot;,
+        &quot;title&quot;: &quot;Test data disclaimer&quot;,
+        &quot;text&quot;: &quot;This document is provided solely for testing CSAF processing and human-readable display. Do not treat it as evidence that any real product is vulnerable or use it as operational security guidance.&quot;
+      }
+    ],
+    &quot;tracking&quot;: {
+      &quot;id&quot;: &quot;DEMO-2026-006&quot;,
+      &quot;status&quot;: &quot;final&quot;,
+      &quot;version&quot;: &quot;2.0.0&quot;,
+      &quot;initial_release_date&quot;: &quot;2026-10-13T15:00:00Z&quot;,
+      &quot;current_release_date&quot;: &quot;2026-10-16T15:00:00Z&quot;,
+      &quot;revision_history&quot;: [
+        {
+          &quot;number&quot;: &quot;1.0.0&quot;,
+          &quot;date&quot;: &quot;2026-10-13T15:00:00Z&quot;,
+          &quot;summary&quot;: &quot;Initial synthetic advisory with preliminary affected-version information.&quot;
+        },
+        {
+          &quot;number&quot;: &quot;2.0.0&quot;,
+          &quot;date&quot;: &quot;2026-10-16T15:00:00Z&quot;,
+          &quot;summary&quot;: &quot;Added fixed and unaffected versions, product-specific scoring, remediation, and demonstration disclaimers.&quot;
+        }
+      ],
+      &quot;aliases&quot;: [
+        &quot;DEMO-PANEL-NOTICE&quot;
+      ]
+    },
+    &quot;lang&quot;: &quot;en&quot;,
+    &quot;references&quot;: [
+      {
+        &quot;category&quot;: &quot;self&quot;,
+        &quot;summary&quot;: &quot;Fictional advisory reference (placeholder only)&quot;,
+        &quot;url&quot;: &quot;https://example.com/csaf/demo-panel&quot;
+      },
+      {
+        &quot;category&quot;: &quot;external&quot;,
+        &quot;summary&quot;: &quot;CSAF 2.0 specification&quot;,
+        &quot;url&quot;: &quot;https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.html&quot;
+      },
+      {
+        &quot;category&quot;: &quot;external&quot;,
+        &quot;summary&quot;: &quot;Weakness classification used for this synthetic example&quot;,
+        &quot;url&quot;: &quot;https://cwe.mitre.org/data/definitions/79.html&quot;
+      }
+    ],
+    &quot;acknowledgments&quot;: [
+      {
+        &quot;organization&quot;: &quot;Fictional Demo Research Team&quot;,
+        &quot;names&quot;: [
+          &quot;Demo Researcher&quot;
+        ],
+        &quot;summary&quot;: &quot;Synthetic contributor attribution; no real vulnerability research is claimed.&quot;
+      }
+    ],
+    &quot;aggregate_severity&quot;: {
+      &quot;text&quot;: &quot;Medium&quot;,
+      &quot;namespace&quot;: &quot;https://www.first.org/cvss/v3.1/specification-document&quot;
+    }
+  },
+  &quot;product_tree&quot;: {
+    &quot;branches&quot;: [
+      {
+        &quot;category&quot;: &quot;vendor&quot;,
+        &quot;name&quot;: &quot;Fictional Demo Vendor&quot;,
+        &quot;branches&quot;: [
+          {
+            &quot;category&quot;: &quot;product_family&quot;,
+            &quot;name&quot;: &quot;Demo Industrial Portfolio&quot;,
+            &quot;branches&quot;: [
+              {
+                &quot;category&quot;: &quot;product_name&quot;,
+                &quot;name&quot;: &quot;Demo Operator Panel P600&quot;,
+                &quot;branches&quot;: [
+                  {
+                    &quot;category&quot;: &quot;product_version&quot;,
+                    &quot;name&quot;: &quot;1.0.0&quot;,
+                    &quot;product&quot;: {
+                      &quot;product_id&quot;: &quot;DEMO-2026-006-1.0.0&quot;,
+                      &quot;name&quot;: &quot;Demo Operator Panel P600 1.0.0&quot;
+                    }
+                  },
+                  {
+                    &quot;category&quot;: &quot;product_version&quot;,
+                    &quot;name&quot;: &quot;1.1.0&quot;,
+                    &quot;product&quot;: {
+                      &quot;product_id&quot;: &quot;DEMO-2026-006-1.1.0&quot;,
+                      &quot;name&quot;: &quot;Demo Operator Panel P600 1.1.0&quot;
+                    }
+                  },
+                  {
+                    &quot;category&quot;: &quot;product_version&quot;,
+                    &quot;name&quot;: &quot;1.2.0&quot;,
+                    &quot;product&quot;: {
+                      &quot;product_id&quot;: &quot;DEMO-2026-006-1.2.0&quot;,
+                      &quot;name&quot;: &quot;Demo Operator Panel P600 1.2.0&quot;
+                    }
+                  },
+                  {
+                    &quot;category&quot;: &quot;product_version&quot;,
+                    &quot;name&quot;: &quot;2.0.0&quot;,
+                    &quot;product&quot;: {
+                      &quot;product_id&quot;: &quot;DEMO-2026-006-2.0.0&quot;,
+                      &quot;name&quot;: &quot;Demo Operator Panel P600 2.0.0&quot;
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  &quot;vulnerabilities&quot;: [
+    {
+      &quot;title&quot;: &quot;[TEST DATA] Improper Neutralization of Input During Web Page Generation in Demo Operator Panel P600&quot;,
+      &quot;ids&quot;: [
+        {
+          &quot;system_name&quot;: &quot;Fictional Demo Vendor issue tracker&quot;,
+          &quot;text&quot;: &quot;DEMO-2026-006-ISSUE-01&quot;
+        }
+      ],
+      &quot;cwe&quot;: {
+        &quot;id&quot;: &quot;CWE-79&quot;,
+        &quot;name&quot;: &quot;Improper Neutralization of Input During Web Page Generation&quot;
+      },
+      &quot;discovery_date&quot;: &quot;2026-10-06T15:00:00Z&quot;,
+      &quot;release_date&quot;: &quot;2026-10-13T15:00:00Z&quot;,
+      &quot;notes&quot;: [
+        {
+          &quot;category&quot;: &quot;summary&quot;,
+          &quot;title&quot;: &quot;Issue summary&quot;,
+          &quot;text&quot;: &quot;The fictional web interface displays a stored operator label without context-appropriate output encoding.&quot;
+        },
+        {
+          &quot;category&quot;: &quot;details&quot;,
+          &quot;title&quot;: &quot;Scope and prerequisites&quot;,
+          &quot;text&quot;: &quot;A user must view the affected web page; the CVSS user-interaction metric is Required. Only versions 1.0.0 and 1.1.0 are covered by the affected status. The 2.0.0 branch uses a different implementation and is not affected.&quot;
+        }
+      ],
+      &quot;product_status&quot;: {
+        &quot;known_affected&quot;: [
+          &quot;DEMO-2026-006-1.0.0&quot;,
+          &quot;DEMO-2026-006-1.1.0&quot;
+        ],
+        &quot;fixed&quot;: [
+          &quot;DEMO-2026-006-1.2.0&quot;
+        ],
+        &quot;known_not_affected&quot;: [
+          &quot;DEMO-2026-006-2.0.0&quot;
+        ]
+      },
+      &quot;flags&quot;: [
+        {
+          &quot;label&quot;: &quot;vulnerable_code_not_present&quot;,
+          &quot;product_ids&quot;: [
+            &quot;DEMO-2026-006-2.0.0&quot;
+          ]
+        }
+      ],
+      &quot;scores&quot;: [
+        {
+          &quot;products&quot;: [
+            &quot;DEMO-2026-006-1.0.0&quot;,
+            &quot;DEMO-2026-006-1.1.0&quot;
+          ],
+          &quot;cvss_v3&quot;: {
+            &quot;version&quot;: &quot;3.1&quot;,
+            &quot;vectorString&quot;: &quot;CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N&quot;,
+            &quot;baseScore&quot;: 6.1,
+            &quot;baseSeverity&quot;: &quot;MEDIUM&quot;,
+            &quot;attackVector&quot;: &quot;NETWORK&quot;,
+            &quot;attackComplexity&quot;: &quot;LOW&quot;,
+            &quot;privilegesRequired&quot;: &quot;NONE&quot;,
+            &quot;userInteraction&quot;: &quot;REQUIRED&quot;,
+            &quot;scope&quot;: &quot;CHANGED&quot;,
+            &quot;confidentialityImpact&quot;: &quot;LOW&quot;,
+            &quot;integrityImpact&quot;: &quot;LOW&quot;,
+            &quot;availabilityImpact&quot;: &quot;NONE&quot;
+          }
+        }
+      ],
+      &quot;threats&quot;: [
+        {
+          &quot;category&quot;: &quot;impact&quot;,
+          &quot;details&quot;: &quot;An authenticated operator viewing the affected page may expose browser-visible information or allow unintended interface actions.&quot;,
+          &quot;product_ids&quot;: [
+            &quot;DEMO-2026-006-1.0.0&quot;,
+            &quot;DEMO-2026-006-1.1.0&quot;
+          ]
+        },
+        {
+          &quot;category&quot;: &quot;exploit_status&quot;,
+          &quot;date&quot;: &quot;2026-10-16T15:00:00Z&quot;,
+          &quot;details&quot;: &quot;Synthetic example only. No real exploit, incident, or exploitation in the wild is asserted.&quot;,
+          &quot;product_ids&quot;: [
+            &quot;DEMO-2026-006-1.0.0&quot;,
+            &quot;DEMO-2026-006-1.1.0&quot;
+          ]
+        }
+      ],
+      &quot;remediations&quot;: [
+        {
+          &quot;category&quot;: &quot;vendor_fix&quot;,
+          &quot;date&quot;: &quot;2026-10-16T15:00:00Z&quot;,
+          &quot;details&quot;: &quot;In this fictional scenario, update Demo Operator Panel P600 from 1.0.0 or 1.1.0 to 1.2.0 during a maintenance window. Back up configuration, verify the installed version after the update, and confirm normal operation. The linked URL is a placeholder, not a download service.&quot;,
+          &quot;product_ids&quot;: [
+            &quot;DEMO-2026-006-1.0.0&quot;,
+            &quot;DEMO-2026-006-1.1.0&quot;
+          ],
+          &quot;restart_required&quot;: {
+            &quot;category&quot;: &quot;machine&quot;,
+            &quot;details&quot;: &quot;A simulated device or application restart is required after the update.&quot;
+          },
+          &quot;url&quot;: &quot;https://example.com/csaf/demo-panel/release-1.2.0&quot;
+        },
+        {
+          &quot;category&quot;: &quot;workaround&quot;,
+          &quot;details&quot;: &quot;Restrict label editing to trusted administrators and avoid displaying unreviewed labels until updated. This reduces exposure but does not replace the fictional software fix.&quot;,
+          &quot;product_ids&quot;: [
+            &quot;DEMO-2026-006-1.0.0&quot;,
+            &quot;DEMO-2026-006-1.1.0&quot;
+          ]
+        },
+        {
+          &quot;category&quot;: &quot;mitigation&quot;,
+          &quot;details&quot;: &quot;Restrict service access to trusted networks, monitor unexpected service activity, and review administrative access until the simulated update is complete.&quot;,
+          &quot;product_ids&quot;: [
+            &quot;DEMO-2026-006-1.0.0&quot;,
+            &quot;DEMO-2026-006-1.1.0&quot;
+          ]
+        }
+      ],
+      &quot;references&quot;: [
+        {
+          &quot;category&quot;: &quot;self&quot;,
+          &quot;summary&quot;: &quot;Synthetic issue record (placeholder only)&quot;,
+          &quot;url&quot;: &quot;https://example.com/csaf/demo-panel/issue-01&quot;
+        }
+      ],
+      &quot;acknowledgments&quot;: [
+        {
+          &quot;organization&quot;: &quot;Fictional Demo Research Team&quot;,
+          &quot;summary&quot;: &quot;Synthetic discovery attribution for demonstration purposes.&quot;
+        }
+      ]
+    }
+  ]
+}</pre></details>
+    <p>Generated from the original JSON document. No remote requests are required.</p>
+  </main>
+</body>
+</html>

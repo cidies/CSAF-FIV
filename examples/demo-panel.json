@@ -1,0 +1,289 @@
+{
+  "document": {
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "title": "[TEST DATA] Example operator panel access configuration",
+    "publisher": {
+      "category": "vendor",
+      "name": "Fictional Demo Vendor",
+      "namespace": "https://example.com",
+      "contact_details": "Fictional contact for demonstration: security@example.com (not monitored).",
+      "issuing_authority": "Fictional Demo Vendor publishes this synthetic advisory solely to demonstrate CSAF 2.0 distribution and rendering."
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      },
+      "text": "Public synthetic example; not a real security advisory. No vendor, product, or incident described here exists."
+    },
+    "notes": [
+      {
+        "category": "summary",
+        "title": "Summary",
+        "text": "Demo Operator Panel P600 versions 1.0.0 and 1.1.0 are affected by a fictional improper neutralization of input during web page generation issue. Version 1.2.0 contains the simulated fix; the separate 2.0.0 branch is not affected."
+      },
+      {
+        "category": "description",
+        "title": "Technical overview",
+        "text": "The fictional web interface displays a stored operator label without context-appropriate output encoding. An authenticated operator viewing the affected page may expose browser-visible information or allow unintended interface actions. The issue is intentionally described without executable attack instructions or payloads."
+      },
+      {
+        "category": "general",
+        "title": "General recommendations",
+        "text": "For this demonstration, inventory the deployed version, restrict management access, back up configuration, and schedule the update to 1.2.0. Validate normal operation after updating. Restrict label editing to trusted administrators and avoid displaying unreviewed labels until updated."
+      },
+      {
+        "category": "faq",
+        "title": "Are these real vulnerabilities?",
+        "text": "No. All products, issue identifiers, release versions, impact statements, and scores are synthetic. No real CVE identifiers are assigned. The example.com references illustrate the document structure and are not working support or download endpoints."
+      },
+      {
+        "category": "legal_disclaimer",
+        "title": "Test data disclaimer",
+        "text": "This document is provided solely for testing CSAF processing and human-readable display. Do not treat it as evidence that any real product is vulnerable or use it as operational security guidance."
+      }
+    ],
+    "tracking": {
+      "id": "DEMO-2026-006",
+      "status": "final",
+      "version": "2.0.0",
+      "initial_release_date": "2026-10-13T15:00:00Z",
+      "current_release_date": "2026-10-16T15:00:00Z",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "date": "2026-10-13T15:00:00Z",
+          "summary": "Initial synthetic advisory with preliminary affected-version information."
+        },
+        {
+          "number": "2.0.0",
+          "date": "2026-10-16T15:00:00Z",
+          "summary": "Added fixed and unaffected versions, product-specific scoring, remediation, and demonstration disclaimers."
+        }
+      ],
+      "aliases": [
+        "DEMO-PANEL-NOTICE"
+      ]
+    },
+    "lang": "en",
+    "references": [
+      {
+        "category": "self",
+        "summary": "Fictional advisory reference (placeholder only)",
+        "url": "https://example.com/csaf/demo-panel"
+      },
+      {
+        "category": "external",
+        "summary": "CSAF 2.0 specification",
+        "url": "https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.html"
+      },
+      {
+        "category": "external",
+        "summary": "Weakness classification used for this synthetic example",
+        "url": "https://cwe.mitre.org/data/definitions/79.html"
+      }
+    ],
+    "acknowledgments": [
+      {
+        "organization": "Fictional Demo Research Team",
+        "names": [
+          "Demo Researcher"
+        ],
+        "summary": "Synthetic contributor attribution; no real vulnerability research is claimed."
+      }
+    ],
+    "aggregate_severity": {
+      "text": "Medium",
+      "namespace": "https://www.first.org/cvss/v3.1/specification-document"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "Fictional Demo Vendor",
+        "branches": [
+          {
+            "category": "product_family",
+            "name": "Demo Industrial Portfolio",
+            "branches": [
+              {
+                "category": "product_name",
+                "name": "Demo Operator Panel P600",
+                "branches": [
+                  {
+                    "category": "product_version",
+                    "name": "1.0.0",
+                    "product": {
+                      "product_id": "DEMO-2026-006-1.0.0",
+                      "name": "Demo Operator Panel P600 1.0.0"
+                    }
+                  },
+                  {
+                    "category": "product_version",
+                    "name": "1.1.0",
+                    "product": {
+                      "product_id": "DEMO-2026-006-1.1.0",
+                      "name": "Demo Operator Panel P600 1.1.0"
+                    }
+                  },
+                  {
+                    "category": "product_version",
+                    "name": "1.2.0",
+                    "product": {
+                      "product_id": "DEMO-2026-006-1.2.0",
+                      "name": "Demo Operator Panel P600 1.2.0"
+                    }
+                  },
+                  {
+                    "category": "product_version",
+                    "name": "2.0.0",
+                    "product": {
+                      "product_id": "DEMO-2026-006-2.0.0",
+                      "name": "Demo Operator Panel P600 2.0.0"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "title": "[TEST DATA] Improper Neutralization of Input During Web Page Generation in Demo Operator Panel P600",
+      "ids": [
+        {
+          "system_name": "Fictional Demo Vendor issue tracker",
+          "text": "DEMO-2026-006-ISSUE-01"
+        }
+      ],
+      "cwe": {
+        "id": "CWE-79",
+        "name": "Improper Neutralization of Input During Web Page Generation"
+      },
+      "discovery_date": "2026-10-06T15:00:00Z",
+      "release_date": "2026-10-13T15:00:00Z",
+      "notes": [
+        {
+          "category": "summary",
+          "title": "Issue summary",
+          "text": "The fictional web interface displays a stored operator label without context-appropriate output encoding."
+        },
+        {
+          "category": "details",
+          "title": "Scope and prerequisites",
+          "text": "A user must view the affected web page; the CVSS user-interaction metric is Required. Only versions 1.0.0 and 1.1.0 are covered by the affected status. The 2.0.0 branch uses a different implementation and is not affected."
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "DEMO-2026-006-1.0.0",
+          "DEMO-2026-006-1.1.0"
+        ],
+        "fixed": [
+          "DEMO-2026-006-1.2.0"
+        ],
+        "known_not_affected": [
+          "DEMO-2026-006-2.0.0"
+        ]
+      },
+      "flags": [
+        {
+          "label": "vulnerable_code_not_present",
+          "product_ids": [
+            "DEMO-2026-006-2.0.0"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "products": [
+            "DEMO-2026-006-1.0.0",
+            "DEMO-2026-006-1.1.0"
+          ],
+          "cvss_v3": {
+            "version": "3.1",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+            "baseScore": 6.1,
+            "baseSeverity": "MEDIUM",
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "NONE",
+            "userInteraction": "REQUIRED",
+            "scope": "CHANGED",
+            "confidentialityImpact": "LOW",
+            "integrityImpact": "LOW",
+            "availabilityImpact": "NONE"
+          }
+        }
+      ],
+      "threats": [
+        {
+          "category": "impact",
+          "details": "An authenticated operator viewing the affected page may expose browser-visible information or allow unintended interface actions.",
+          "product_ids": [
+            "DEMO-2026-006-1.0.0",
+            "DEMO-2026-006-1.1.0"
+          ]
+        },
+        {
+          "category": "exploit_status",
+          "date": "2026-10-16T15:00:00Z",
+          "details": "Synthetic example only. No real exploit, incident, or exploitation in the wild is asserted.",
+          "product_ids": [
+            "DEMO-2026-006-1.0.0",
+            "DEMO-2026-006-1.1.0"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "date": "2026-10-16T15:00:00Z",
+          "details": "In this fictional scenario, update Demo Operator Panel P600 from 1.0.0 or 1.1.0 to 1.2.0 during a maintenance window. Back up configuration, verify the installed version after the update, and confirm normal operation. The linked URL is a placeholder, not a download service.",
+          "product_ids": [
+            "DEMO-2026-006-1.0.0",
+            "DEMO-2026-006-1.1.0"
+          ],
+          "restart_required": {
+            "category": "machine",
+            "details": "A simulated device or application restart is required after the update."
+          },
+          "url": "https://example.com/csaf/demo-panel/release-1.2.0"
+        },
+        {
+          "category": "workaround",
+          "details": "Restrict label editing to trusted administrators and avoid displaying unreviewed labels until updated. This reduces exposure but does not replace the fictional software fix.",
+          "product_ids": [
+            "DEMO-2026-006-1.0.0",
+            "DEMO-2026-006-1.1.0"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Restrict service access to trusted networks, monitor unexpected service activity, and review administrative access until the simulated update is complete.",
+          "product_ids": [
+            "DEMO-2026-006-1.0.0",
+            "DEMO-2026-006-1.1.0"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "category": "self",
+          "summary": "Synthetic issue record (placeholder only)",
+          "url": "https://example.com/csaf/demo-panel/issue-01"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Fictional Demo Research Team",
+          "summary": "Synthetic discovery attribution for demonstration purposes."
+        }
+      ]
+    }
+  ]
+}

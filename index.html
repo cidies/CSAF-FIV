@@ -165,11 +165,15 @@
 
     <p class="description">
       Browse and search CSAF security advisories
-      from a configured provider feed.
+      before opening the original CSAF JSON documents.
     </p>
 
     <div id="meta" class="meta" aria-live="polite">
-      Loading CSAF feed...
+      <!-- generated-meta:start -->
+      <strong>Example CSAF advisories (fictional test data)</strong>
+      <div>Last updated: 2026-11-06T09:00:00Z | Documents: 10</div>
+      <div>Generated from the bundled JSON feed. Fictional test data only.</div>
+          <!-- generated-meta:end -->
     </div>
 
     <div id="error"></div>
@@ -199,9 +203,68 @@
           </tr>
         </thead>
         <tbody id="results">
-          <tr>
-            <td colspan="4">Loading data...</td>
+          <!-- generated-rows:start -->
+          <tr data-updated="2026-11-01T10:00:00Z">
+            <td><span class="badge">2026-11-01T10:00:00Z</span></td>
+            <td>[TEST DATA] Example router firmware update</td>
+            <td><span class="id">DEMO-2026-001</span></td>
+            <td class="actions"><a href="./examples/demo-router.html" target="_blank" rel="noopener noreferrer">HTML</a> <a href="./examples/demo-router.json" target="_blank" rel="noopener noreferrer">JSON</a></td>
           </tr>
+          <tr data-updated="2026-11-05T14:30:00Z">
+            <td><span class="badge">2026-11-05T14:30:00Z</span></td>
+            <td>[TEST DATA] Example controller configuration guidance</td>
+            <td><span class="id">DEMO-2026-002</span></td>
+            <td class="actions"><a href="./examples/demo-controller.html" target="_blank" rel="noopener noreferrer">HTML</a> <a href="./examples/demo-controller.json" target="_blank" rel="noopener noreferrer">JSON</a></td>
+          </tr>
+          <tr data-updated="2026-10-03T09:00:00Z">
+            <td><span class="badge">2026-10-03T09:00:00Z</span></td>
+            <td>[TEST DATA] Example network switch maintenance update</td>
+            <td><span class="id">DEMO-2026-003</span></td>
+            <td class="actions"><a href="./examples/demo-switch.html" target="_blank" rel="noopener noreferrer">HTML</a> <a href="./examples/demo-switch.json" target="_blank" rel="noopener noreferrer">JSON</a></td>
+          </tr>
+          <tr data-updated="2026-10-08T12:00:00Z">
+            <td><span class="badge">2026-10-08T12:00:00Z</span></td>
+            <td>[TEST DATA] Example industrial gateway configuration guidance</td>
+            <td><span class="id">DEMO-2026-004</span></td>
+            <td class="actions"><a href="./examples/demo-gateway.html" target="_blank" rel="noopener noreferrer">HTML</a> <a href="./examples/demo-gateway.json" target="_blank" rel="noopener noreferrer">JSON</a></td>
+          </tr>
+          <tr data-updated="2026-10-12T08:30:00Z">
+            <td><span class="badge">2026-10-12T08:30:00Z</span></td>
+            <td>[TEST DATA] Example sensor firmware update</td>
+            <td><span class="id">DEMO-2026-005</span></td>
+            <td class="actions"><a href="./examples/demo-sensor.html" target="_blank" rel="noopener noreferrer">HTML</a> <a href="./examples/demo-sensor.json" target="_blank" rel="noopener noreferrer">JSON</a></td>
+          </tr>
+          <tr data-updated="2026-10-16T15:00:00Z">
+            <td><span class="badge">2026-10-16T15:00:00Z</span></td>
+            <td>[TEST DATA] Example operator panel access configuration</td>
+            <td><span class="id">DEMO-2026-006</span></td>
+            <td class="actions"><a href="./examples/demo-panel.html" target="_blank" rel="noopener noreferrer">HTML</a> <a href="./examples/demo-panel.json" target="_blank" rel="noopener noreferrer">JSON</a></td>
+          </tr>
+          <tr data-updated="2026-10-20T10:00:00Z">
+            <td><span class="badge">2026-10-20T10:00:00Z</span></td>
+            <td>[TEST DATA] Example drive controller maintenance update</td>
+            <td><span class="id">DEMO-2026-007</span></td>
+            <td class="actions"><a href="./examples/demo-drive.html" target="_blank" rel="noopener noreferrer">HTML</a> <a href="./examples/demo-drive.json" target="_blank" rel="noopener noreferrer">JSON</a></td>
+          </tr>
+          <tr data-updated="2026-10-24T11:00:00Z">
+            <td><span class="badge">2026-10-24T11:00:00Z</span></td>
+            <td>[TEST DATA] Example firewall management guidance</td>
+            <td><span class="id">DEMO-2026-008</span></td>
+            <td class="actions"><a href="./examples/demo-firewall.html" target="_blank" rel="noopener noreferrer">HTML</a> <a href="./examples/demo-firewall.json" target="_blank" rel="noopener noreferrer">JSON</a></td>
+          </tr>
+          <tr data-updated="2026-10-28T13:00:00Z">
+            <td><span class="badge">2026-10-28T13:00:00Z</span></td>
+            <td>[TEST DATA] Example network camera firmware update</td>
+            <td><span class="id">DEMO-2026-009</span></td>
+            <td class="actions"><a href="./examples/demo-camera.html" target="_blank" rel="noopener noreferrer">HTML</a> <a href="./examples/demo-camera.json" target="_blank" rel="noopener noreferrer">JSON</a></td>
+          </tr>
+          <tr data-updated="2026-11-06T09:00:00Z">
+            <td><span class="badge">2026-11-06T09:00:00Z</span></td>
+            <td>[TEST DATA] Example monitoring server configuration guidance</td>
+            <td><span class="id">DEMO-2026-010</span></td>
+            <td class="actions"><a href="./examples/demo-server.html" target="_blank" rel="noopener noreferrer">HTML</a> <a href="./examples/demo-server.json" target="_blank" rel="noopener noreferrer">JSON</a></td>
+          </tr>
+          <!-- generated-rows:end -->
         </tbody>
       </table>
     </div>
@@ -212,12 +275,12 @@
 
     // CONFIGURATION
     const CONFIG = {
-      feedUrl:
-        "https://u-blox.csaf-provider.com/.well-known/csaf/white/csaf-feed-tlp-white.json",
+      // Leave empty for the generated landing page; set your provider's feed URL.
+      feedUrl: "",
 
       // Set true only when the provider publishes matching
       // .html documents alongside its .json documents.
-      htmlLinks: true
+      htmlLinks: false
     };
 
     let entries = [];
@@ -231,10 +294,17 @@
       results: document.getElementById("results")
     };
 
-    function safeUrl(value) {
+    function safeUrl(value, baseUrl) {
       try {
-        const url = new URL(value, CONFIG.feedUrl);
-        return url.protocol === "https:" ? url.href : null;
+        const url = new URL(value, baseUrl);
+        const base = new URL(baseUrl);
+        const relativeFile = typeof value === "string" &&
+          /^(?:\.\/)?[a-z0-9_-]+\.json$/i.test(value);
+        return url.protocol === "https:" ||
+          (url.protocol === "http:" && base.protocol === "http:" &&
+            url.origin === base.origin) ||
+          (url.protocol === "file:" && base.protocol === "file:" && relativeFile)
+            ? url.href : null;
       } catch {
         return null;
       }
@@ -249,7 +319,7 @@
       return date.toLocaleString("en-GB");
     }
 
-    function getJsonUrl(entry) {
+    function getJsonUrl(entry, baseUrl) {
       let value = entry.content?.src;
 
       if (!value && Array.isArray(entry.link)) {
@@ -259,7 +329,7 @@
         value = link?.href;
       }
 
-      return value ? safeUrl(value) : null;
+      return value ? safeUrl(value, baseUrl) : null;
     }
 
     function getHtmlUrl(jsonUrl) {
@@ -369,11 +439,100 @@
       elements.results.appendChild(fragment);
     }
 
+    function parseJson(text) {
+      try {
+        return JSON.parse(text);
+      } catch {
+        throw new Error(
+          /^\s*</.test(text)
+            ? "The source contains HTML, not a JSON feed."
+            : "The source does not contain valid JSON."
+        );
+      }
+    }
+
+    function normalizeEntries(data, baseUrl) {
+      if (data?.role === "csaf_provider" || data?.distributions) {
+        throw new Error(
+          "Provider metadata is not a feed. Configure a JSON feed " +
+          "containing feed.entry."
+        );
+      }
+
+      if (Array.isArray(data?.feed?.entry)) {
+        return data.feed.entry.map(entry => {
+          if (!entry || typeof entry !== "object" || Array.isArray(entry)) {
+            throw new Error("Invalid feed entry: expected an object.");
+          }
+          return makeEntry(entry.title, entry.id, entry.updated,
+            getJsonUrl(entry, baseUrl));
+        });
+      }
+
+      throw new Error("Expected a feed.entry array.");
+    }
+
+    function makeEntry(title, id, updated, jsonUrl) {
+      const timestamp = Date.parse(updated);
+      return {
+        timestamp: Number.isFinite(timestamp) ? timestamp : 0,
+        date: formatDate(updated),
+        title: String(title ?? "No title"),
+        id: String(id ?? "N/A"),
+        jsonUrl,
+        htmlUrl: getHtmlUrl(jsonUrl)
+      };
+    }
+
+    function showEntries(nextEntries, feedTitle, updated, source) {
+      entries = nextEntries;
+      elements.error.replaceChildren();
+      elements.meta.replaceChildren();
+      const title = document.createElement("strong");
+      title.textContent = feedTitle;
+      const details = document.createElement("div");
+      details.textContent =
+        `Last updated: ${formatDate(updated)} | Documents: ${entries.length}`;
+      const origin = document.createElement("div");
+      origin.textContent = source;
+      elements.meta.append(title, details, origin);
+      elements.search.disabled = false;
+      render();
+    }
+
+    function showError(error, hint) {
+      console.error(error);
+      const message = document.createElement("div");
+      message.className = "error";
+      message.textContent = `${error.message} ${hint}`;
+      elements.error.replaceChildren(message);
+      if (!entries.length) {
+        elements.meta.textContent = "No data available.";
+        elements.search.disabled = true;
+        elements.results.replaceChildren();
+        const row = document.createElement("tr");
+        createCell(row, "Loading failed.").colSpan = 4;
+        elements.results.appendChild(row);
+      }
+    }
+
     async function loadFeed() {
       elements.error.replaceChildren();
-
       try {
-        const response = await fetch(CONFIG.feedUrl, {
+        if (!CONFIG.feedUrl) {
+          entries = Array.from(elements.results.querySelectorAll("tr[data-updated]"),
+            row => {
+              const item = makeEntry(row.cells[1].textContent, row.cells[2].textContent,
+                row.dataset.updated, row.querySelector('a[href$=".json"]').href);
+              item.htmlUrl = row.querySelector('a[href$=".html"]').href;
+              return item;
+            });
+          elements.search.disabled = false;
+          render();
+          return;
+        }
+        const feedUrl = new URL(CONFIG.feedUrl, document.baseURI).href;
+        const response = await fetch(feedUrl, {
           headers: { Accept: "application/json" }
         });
 
@@ -383,68 +542,16 @@
           );
         }
 
-        const data = await response.json();
-
-        if (!data?.feed || !Array.isArray(data.feed.entry)) {
-          throw new Error(
-            "Invalid feed: expected feed.entry array."
-          );
-        }
-
-        entries = data.feed.entry.map(entry => {
-          const jsonUrl = getJsonUrl(entry);
-          const timestamp = Date.parse(entry.updated);
-
-          return {
-            timestamp: Number.isFinite(timestamp)
-              ? timestamp
-              : 0,
-            date: formatDate(entry.updated),
-            title: String(entry.title ?? "No title"),
-            id: String(entry.id ?? "N/A"),
-            jsonUrl,
-            htmlUrl: getHtmlUrl(jsonUrl)
-          };
-        });
-
-        const feedTitle = String(
-          data.feed.title ?? "CSAF Provider Feed"
-        );
-
-        elements.meta.replaceChildren();
-
-        const title = document.createElement("strong");
-        title.textContent = feedTitle;
-
-        const details = document.createElement("div");
-        details.textContent =
-          `Last updated: ${formatDate(data.feed.updated)} | ` +
-          `Documents: ${entries.length}`;
-
-        elements.meta.append(title, details);
-
-        elements.search.disabled = false;
-        render();
-
+        const data = parseJson(await response.text());
+        const nextEntries = normalizeEntries(data, response.url || feedUrl);
+        showEntries(nextEntries, String(data.feed.title ?? "CSAF Provider Feed"),
+          data.feed.updated, response.url || feedUrl);
       } catch (error) {
-        console.error(error);
-
-        elements.meta.textContent = "Feed unavailable.";
-
-        const message = document.createElement("div");
-        message.className = "error";
-        message.textContent =
-          `Could not load CSAF feed: ${error.message}. ` +
-          "Check the URL, network connectivity and CORS policy.";
-
-        elements.error.replaceChildren(message);
-
-        elements.results.replaceChildren();
-
-        const row = document.createElement("tr");
-        const cell = createCell(row, "Loading failed.");
-        cell.colSpan = 4;
-        elements.results.appendChild(row);
+        const localFeed = new URL(CONFIG.feedUrl, document.baseURI).protocol === "file:";
+        showError(error, localFeed
+          ? "Check the file path. Your browser may block local JSON requests " +
+            "under file://; in that case serve these static files over localhost or HTTPS."
+          : "Check the feed URL, network and provider CORS policy.");
       }
     }
 

@@ -1,0 +1,155 @@
+{
+  "feed": {
+    "title": "Example CSAF advisories (fictional test data)",
+    "id": "https://example.com/csaf/white/csaf-feed-tlp-white.json",
+    "updated": "2026-11-06T09:00:00Z",
+    "entry": [
+      {
+        "title": "[TEST DATA] Example router firmware update",
+        "id": "DEMO-2026-001",
+        "updated": "2026-11-01T10:00:00Z",
+        "content": {
+          "type": "application/json",
+          "src": "./demo-router.json"
+        },
+        "published": "2026-10-29T10:00:00Z",
+        "format": {
+          "schema": "https://docs.oasis-open.org/csaf/csaf/v2.0/csaf_json_schema.json",
+          "version": "2.0"
+        }
+      },
+      {
+        "title": "[TEST DATA] Example controller configuration guidance",
+        "id": "DEMO-2026-002",
+        "updated": "2026-11-05T14:30:00Z",
+        "content": {
+          "type": "application/json",
+          "src": "./demo-controller.json"
+        },
+        "published": "2026-11-02T14:30:00Z",
+        "format": {
+          "schema": "https://docs.oasis-open.org/csaf/csaf/v2.0/csaf_json_schema.json",
+          "version": "2.0"
+        }
+      },
+      {
+        "title": "[TEST DATA] Example network switch maintenance update",
+        "id": "DEMO-2026-003",
+        "updated": "2026-10-03T09:00:00Z",
+        "content": {
+          "type": "application/json",
+          "src": "./demo-switch.json"
+        },
+        "published": "2026-09-30T09:00:00Z",
+        "format": {
+          "schema": "https://docs.oasis-open.org/csaf/csaf/v2.0/csaf_json_schema.json",
+          "version": "2.0"
+        }
+      },
+      {
+        "title": "[TEST DATA] Example industrial gateway configuration guidance",
+        "id": "DEMO-2026-004",
+        "updated": "2026-10-08T12:00:00Z",
+        "content": {
+          "type": "application/json",
+          "src": "./demo-gateway.json"
+        },
+        "published": "2026-10-05T12:00:00Z",
+        "format": {
+          "schema": "https://docs.oasis-open.org/csaf/csaf/v2.0/csaf_json_schema.json",
+          "version": "2.0"
+        }
+      },
+      {
+        "title": "[TEST DATA] Example sensor firmware update",
+        "id": "DEMO-2026-005",
+        "updated": "2026-10-12T08:30:00Z",
+        "content": {
+          "type": "application/json",
+          "src": "./demo-sensor.json"
+        },
+        "published": "2026-10-09T08:30:00Z",
+        "format": {
+          "schema": "https://docs.oasis-open.org/csaf/csaf/v2.0/csaf_json_schema.json",
+          "version": "2.0"
+        }
+      },
+      {
+        "title": "[TEST DATA] Example operator panel access configuration",
+        "id": "DEMO-2026-006",
+        "updated": "2026-10-16T15:00:00Z",
+        "content": {
+          "type": "application/json",
+          "src": "./demo-panel.json"
+        },
+        "published": "2026-10-13T15:00:00Z",
+        "format": {
+          "schema": "https://docs.oasis-open.org/csaf/csaf/v2.0/csaf_json_schema.json",
+          "version": "2.0"
+        }
+      },
+      {
+        "title": "[TEST DATA] Example drive controller maintenance update",
+        "id": "DEMO-2026-007",
+        "updated": "2026-10-20T10:00:00Z",
+        "content": {
+          "type": "application/json",
+          "src": "./demo-drive.json"
+        },
+        "published": "2026-10-17T10:00:00Z",
+        "format": {
+          "schema": "https://docs.oasis-open.org/csaf/csaf/v2.0/csaf_json_schema.json",
+          "version": "2.0"
+        }
+      },
+      {
+        "title": "[TEST DATA] Example firewall management guidance",
+        "id": "DEMO-2026-008",
+        "updated": "2026-10-24T11:00:00Z",
+        "content": {
+          "type": "application/json",
+          "src": "./demo-firewall.json"
+        },
+        "published": "2026-10-21T11:00:00Z",
+        "format": {
+          "schema": "https://docs.oasis-open.org/csaf/csaf/v2.0/csaf_json_schema.json",
+          "version": "2.0"
+        }
+      },
+      {
+        "title": "[TEST DATA] Example network camera firmware update",
+        "id": "DEMO-2026-009",
+        "updated": "2026-10-28T13:00:00Z",
+        "content": {
+          "type": "application/json",
+          "src": "./demo-camera.json"
+        },
+        "published": "2026-10-25T13:00:00Z",
+        "format": {
+          "schema": "https://docs.oasis-open.org/csaf/csaf/v2.0/csaf_json_schema.json",
+          "version": "2.0"
+        }
+      },
+      {
+        "title": "[TEST DATA] Example monitoring server configuration guidance",
+        "id": "DEMO-2026-010",
+        "updated": "2026-11-06T09:00:00Z",
+        "content": {
+          "type": "application/json",
+          "src": "./demo-server.json"
+        },
+        "published": "2026-11-03T09:00:00Z",
+        "format": {
+          "schema": "https://docs.oasis-open.org/csaf/csaf/v2.0/csaf_json_schema.json",
+          "version": "2.0"
+        }
+      }
+    ],
+    "category": [
+      {
+        "scheme": "urn:ietf:params:rolie:category:information-type",
+        "term": "csaf"
+      }
+    ]
+  }
+}

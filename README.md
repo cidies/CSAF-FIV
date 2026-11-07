@@ -26,16 +26,108 @@ The application consists of static HTML, CSS, and JavaScript and runs entirely i
 
 1. Download or clone this repository.
 2. Open `index.html` in your browser.
-3. The application automatically attempts to load the configured CSAF feed.
-4. Browse, filter, and sort the available advisories.
+3. The landing page displays the table generated from the bundled JSON feed.
+4. Browse, filter, and sort the advisories, then follow **HTML** for a readable
+   detail page or **JSON** for the original file.
 
 No installation or build process is necessary.
 
-**Important:** Some browsers restrict cross-origin network requests when an HTML file is opened directly using the `file://` protocol.
+### Bundled examples and your own advisories
 
-The application itself does not require a server. However, retrieving a remote CSAF feed depends on the browser's security policies and the provider's CORS configuration.
+The default landing page is generated from [csaf-feed-tlp-white.json](examples/csaf-feed-tlp-white.json) and links
+directly to ten separate CSAF JSON examples in [examples](examples/), covering
+routers, controllers, switches, gateways, sensors, panels, drives, firewalls,
+cameras, and servers. The examples are fictional
+and clearly marked `[TEST DATA]`; they do not describe real vulnerabilities.
+Each example includes four explicit product versions, affected/fixed/unaffected
+status, a synthetic vulnerability identifier, a CWE classification, CVSS 3.1
+scores and vectors, impact and exploitation statements, three remediation
+options, references, acknowledgments, and a two-release revision history.
+The examples cover different weakness types and severities, including resource
+exhaustion, authorization failures, information disclosure, and cross-site
+scripting. No real CVE numbers are invented or attributed to these products.
+All vendor/support/download links under `example.com` are illustrative
+placeholders, not operational endpoints.
+The generated table is already present in the HTML, so opening it directly via
+`file://` requires no JSON fetch, server, import, or upload. Keep the `examples`
+directory alongside `index.html` so the JSON links work.
+The JSON feed is the source of truth; do not edit the generated table manually.
 
-If a remote feed cannot be loaded locally, the same files can optionally be published using GitHub Pages or any static web hosting service.
+To publish your own advisories, replace the example JSON files and update
+the example JSON feed: each entry contains the document title, ID,
+update date, and `content.src` pointing to its JSON file. Keep these values
+consistent with the original advisory's `document` and `document.tracking`
+metadata. Document links are resolved relative to the feed URL, not the HTML
+page. For local files next to the feed, use `./<filename>.json`, with letters,
+digits, underscores, or hyphens in the filename.
+
+After changing the feed or advisory files, regenerate the landing page using
+Node.js (no dependencies required):
+
+```sh
+node generate-index.mjs
+```
+
+The generator also creates a separate HTML detail page for each advisory,
+with document metadata, notes, product inventory, vulnerability details,
+product status, CVSS scores, remediation instructions, references, revision
+history, and the complete JSON content.
+The structure is inspired by the public u-blox advisory pages, with an independent
+implementation and no copied vendor content or branding. These pages work
+offline and link back to the landing page and the original JSON.
+
+The generator checks that titles, IDs, and release dates match the referenced
+CSAF documents. Only maintainers need Node.js to update the page; visitors
+can simply open the generated HTML. Search and sorting run in the browser.
+
+The page provides a human-readable index before opening the original JSON
+documents. The expanded examples have been checked against the official
+[CSAF 2.0 schema](https://docs.oasis-open.org/csaf/csaf/v2.0/csaf_json_schema.json)
+and its referenced CVSS schemas. All ten examples also pass the strict schema
+check and all 43 mandatory CSAF 2.0 tests in
+[`@secvisogram/csaf-validator-lib` 3.0.2](https://github.com/secvisogram/csaf-validator-lib),
+including product references, status consistency, dates, CWE names, and CVSS
+calculations. Validation was run locally, without uploading the documents.
+This does not certify a CSAF provider's distribution infrastructure.
+The generator checks metadata and rendered product references; it does not
+automatically rerun the complete conformance suite after future edits.
+
+### Remote feeds and CORS limitations
+
+**A publicly accessible JSON URL is not necessarily readable by this viewer.**
+Opening a URL in a browser tab or retrieving it with `curl` can work even when
+JavaScript requests from this page are blocked by Cross-Origin Resource Sharing
+(CORS).
+
+The remote provider must send an `Access-Control-Allow-Origin` response header
+that permits this page's origin. When opened using `file://`, the page typically
+has the origin `null`. The optional u-blox feed was tested with
+`Access-Control-Allow-Origin: *` and works with this setup.
+
+Other providers may restrict access. During checks on November 7, 2026:
+
+- MSRC allowed only `https://msrc.microsoft.com`, blocking this local viewer.
+- The BSI/CERT-Bund feeds returned JSON but no CORS permission header.
+
+These provider settings can change. A blocked request commonly appears in the
+browser console as a CORS error followed by `TypeError: Failed to fetch`.
+The viewer cannot read or process the blocked response.
+
+Publishing the viewer on localhost, GitHub Pages, or another static host
+**does not automatically fix provider-side CORS restrictions**. It only changes
+the page's origin, which the provider must still allow. JavaScript cannot grant
+itself this permission, and `fetch` with `mode: "no-cors"` does not help because
+the response body is then unreadable.
+
+The generated landing page makes no feed request, avoiding CORS and local file
+fetch restrictions. When `feedUrl` is configured, the browser loads that feed
+instead; this requires the appropriate CORS permissions. Browsers can also
+block a configured local JSON feed under `file://`; such feeds need HTTP(S)
+hosting. There is no automatic fallback to example data when a feed fails.
+Do not disable browser security to work around restrictions.
+
+A server-side fetch/proxy would be another solution, but is not included in
+this static application.
 
 ## Configuration
 
@@ -47,16 +139,16 @@ Locate the following section:
 
 ```javascript
 const CONFIG = {
-  feedUrl:
-    "https://u-blox.csaf-provider.com/.well-known/csaf/white/csaf-feed-tlp-white.json",
+  feedUrl: "",
 
-  htmlLinks: true
+  htmlLinks: false
 };
 ```
 
 ### 1. Configure the CSAF Feed URL
 
-Replace the value of `feedUrl` with the URL of your provider's CSAF feed.
+Leave `feedUrl` empty to use the table generated from the bundled JSON feed.
+To use your own CSAF server, set it to your provider's JSON feed URL.
 
 Example:
 
@@ -65,6 +157,9 @@ feedUrl: "https://security.example.com/.well-known/csaf/white/csaf-feed-tlp-whit
 ```
 
 The URL must point to the actual JSON feed, not to an HTML overview page.
+It must also not point to `provider-metadata.json`: provider metadata describes
+the provider and its distribution directories, but it is not itself a feed.
+The directory URLs in that metadata are not interchangeable with a feed URL.
 
 The viewer expects a feed containing an array of advisory entries under:
 
@@ -106,7 +201,12 @@ If your provider does not publish corresponding HTML files, disable this feature
 htmlLinks: false
 ```
 
-**Note:** The viewer does not currently convert individual CSAF JSON documents into HTML. It only links to existing HTML versions.
+**Note:** For remote feeds, this option only links to existing HTML versions.
+The local generator creates HTML versions of the bundled advisories regardless
+of this setting. It renders the fields used in the examples, including CVSS 3.x
+scores and product-specific remediation. It is not a universal renderer for
+every optional CSAF field; all fields remain available in the complete JSON
+document on each detail page.
 
 ### 3. Save and Reload
 
@@ -114,11 +214,11 @@ After changing the configuration:
 
 1. Save `index.html`.
 2. Reload the page in your browser.
-3. The viewer will retrieve the newly configured feed.
+3. The viewer displays the generated table or loads the configured JSON feed.
 
 No compilation, package installation, or restart is necessary.
 
-## Example: u-blox CSAF Feed
+## Optional remote feed: u-blox
 
 The following public feed can be used as an example:
 

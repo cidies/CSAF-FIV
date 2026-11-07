@@ -1,0 +1,289 @@
+{
+  "document": {
+    "category": "csaf_security_advisory",
+    "csaf_version": "2.0",
+    "title": "[TEST DATA] Example network camera firmware update",
+    "publisher": {
+      "category": "vendor",
+      "name": "Fictional Demo Vendor",
+      "namespace": "https://example.com",
+      "contact_details": "Fictional contact for demonstration: security@example.com (not monitored).",
+      "issuing_authority": "Fictional Demo Vendor publishes this synthetic advisory solely to demonstrate CSAF 2.0 distribution and rendering."
+    },
+    "distribution": {
+      "tlp": {
+        "label": "WHITE"
+      },
+      "text": "Public synthetic example; not a real security advisory. No vendor, product, or incident described here exists."
+    },
+    "notes": [
+      {
+        "category": "summary",
+        "title": "Summary",
+        "text": "Demo Camera C900 versions 1.0.0 and 1.1.0 are affected by a fictional insertion of sensitive information into log file issue. Version 1.2.0 contains the simulated fix; the separate 2.0.0 branch is not affected."
+      },
+      {
+        "category": "description",
+        "title": "Technical overview",
+        "text": "The fictional log export includes sensitive configuration values accessible to a low-privileged support account. A support account may read information not intended for that role. The issue is intentionally described without executable attack instructions or payloads."
+      },
+      {
+        "category": "general",
+        "title": "General recommendations",
+        "text": "For this demonstration, inventory the deployed version, restrict management access, back up configuration, and schedule the update to 1.2.0. Validate normal operation after updating. Disable support-account log exports and limit log access to trusted administrators."
+      },
+      {
+        "category": "faq",
+        "title": "Are these real vulnerabilities?",
+        "text": "No. All products, issue identifiers, release versions, impact statements, and scores are synthetic. No real CVE identifiers are assigned. The example.com references illustrate the document structure and are not working support or download endpoints."
+      },
+      {
+        "category": "legal_disclaimer",
+        "title": "Test data disclaimer",
+        "text": "This document is provided solely for testing CSAF processing and human-readable display. Do not treat it as evidence that any real product is vulnerable or use it as operational security guidance."
+      }
+    ],
+    "tracking": {
+      "id": "DEMO-2026-009",
+      "status": "final",
+      "version": "2.0.0",
+      "initial_release_date": "2026-10-25T13:00:00Z",
+      "current_release_date": "2026-10-28T13:00:00Z",
+      "revision_history": [
+        {
+          "number": "1.0.0",
+          "date": "2026-10-25T13:00:00Z",
+          "summary": "Initial synthetic advisory with preliminary affected-version information."
+        },
+        {
+          "number": "2.0.0",
+          "date": "2026-10-28T13:00:00Z",
+          "summary": "Added fixed and unaffected versions, product-specific scoring, remediation, and demonstration disclaimers."
+        }
+      ],
+      "aliases": [
+        "DEMO-CAMERA-NOTICE"
+      ]
+    },
+    "lang": "en",
+    "references": [
+      {
+        "category": "self",
+        "summary": "Fictional advisory reference (placeholder only)",
+        "url": "https://example.com/csaf/demo-camera"
+      },
+      {
+        "category": "external",
+        "summary": "CSAF 2.0 specification",
+        "url": "https://docs.oasis-open.org/csaf/csaf/v2.0/os/csaf-v2.0-os.html"
+      },
+      {
+        "category": "external",
+        "summary": "Weakness classification used for this synthetic example",
+        "url": "https://cwe.mitre.org/data/definitions/532.html"
+      }
+    ],
+    "acknowledgments": [
+      {
+        "organization": "Fictional Demo Research Team",
+        "names": [
+          "Demo Researcher"
+        ],
+        "summary": "Synthetic contributor attribution; no real vulnerability research is claimed."
+      }
+    ],
+    "aggregate_severity": {
+      "text": "Medium",
+      "namespace": "https://www.first.org/cvss/v3.1/specification-document"
+    }
+  },
+  "product_tree": {
+    "branches": [
+      {
+        "category": "vendor",
+        "name": "Fictional Demo Vendor",
+        "branches": [
+          {
+            "category": "product_family",
+            "name": "Demo Industrial Portfolio",
+            "branches": [
+              {
+                "category": "product_name",
+                "name": "Demo Camera C900",
+                "branches": [
+                  {
+                    "category": "product_version",
+                    "name": "1.0.0",
+                    "product": {
+                      "product_id": "DEMO-2026-009-1.0.0",
+                      "name": "Demo Camera C900 1.0.0"
+                    }
+                  },
+                  {
+                    "category": "product_version",
+                    "name": "1.1.0",
+                    "product": {
+                      "product_id": "DEMO-2026-009-1.1.0",
+                      "name": "Demo Camera C900 1.1.0"
+                    }
+                  },
+                  {
+                    "category": "product_version",
+                    "name": "1.2.0",
+                    "product": {
+                      "product_id": "DEMO-2026-009-1.2.0",
+                      "name": "Demo Camera C900 1.2.0"
+                    }
+                  },
+                  {
+                    "category": "product_version",
+                    "name": "2.0.0",
+                    "product": {
+                      "product_id": "DEMO-2026-009-2.0.0",
+                      "name": "Demo Camera C900 2.0.0"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "vulnerabilities": [
+    {
+      "title": "[TEST DATA] Insertion of Sensitive Information into Log File in Demo Camera C900",
+      "ids": [
+        {
+          "system_name": "Fictional Demo Vendor issue tracker",
+          "text": "DEMO-2026-009-ISSUE-01"
+        }
+      ],
+      "cwe": {
+        "id": "CWE-532",
+        "name": "Insertion of Sensitive Information into Log File"
+      },
+      "discovery_date": "2026-10-18T13:00:00Z",
+      "release_date": "2026-10-25T13:00:00Z",
+      "notes": [
+        {
+          "category": "summary",
+          "title": "Issue summary",
+          "text": "The fictional log export includes sensitive configuration values accessible to a low-privileged support account."
+        },
+        {
+          "category": "details",
+          "title": "Scope and prerequisites",
+          "text": "A low-privileged account is required. Only versions 1.0.0 and 1.1.0 are covered by the affected status. The 2.0.0 branch uses a different implementation and is not affected."
+        }
+      ],
+      "product_status": {
+        "known_affected": [
+          "DEMO-2026-009-1.0.0",
+          "DEMO-2026-009-1.1.0"
+        ],
+        "fixed": [
+          "DEMO-2026-009-1.2.0"
+        ],
+        "known_not_affected": [
+          "DEMO-2026-009-2.0.0"
+        ]
+      },
+      "flags": [
+        {
+          "label": "vulnerable_code_not_present",
+          "product_ids": [
+            "DEMO-2026-009-2.0.0"
+          ]
+        }
+      ],
+      "scores": [
+        {
+          "products": [
+            "DEMO-2026-009-1.0.0",
+            "DEMO-2026-009-1.1.0"
+          ],
+          "cvss_v3": {
+            "version": "3.1",
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+            "baseScore": 6.5,
+            "baseSeverity": "MEDIUM",
+            "attackVector": "NETWORK",
+            "attackComplexity": "LOW",
+            "privilegesRequired": "LOW",
+            "userInteraction": "NONE",
+            "scope": "UNCHANGED",
+            "confidentialityImpact": "HIGH",
+            "integrityImpact": "NONE",
+            "availabilityImpact": "NONE"
+          }
+        }
+      ],
+      "threats": [
+        {
+          "category": "impact",
+          "details": "A support account may read information not intended for that role.",
+          "product_ids": [
+            "DEMO-2026-009-1.0.0",
+            "DEMO-2026-009-1.1.0"
+          ]
+        },
+        {
+          "category": "exploit_status",
+          "date": "2026-10-28T13:00:00Z",
+          "details": "Synthetic example only. No real exploit, incident, or exploitation in the wild is asserted.",
+          "product_ids": [
+            "DEMO-2026-009-1.0.0",
+            "DEMO-2026-009-1.1.0"
+          ]
+        }
+      ],
+      "remediations": [
+        {
+          "category": "vendor_fix",
+          "date": "2026-10-28T13:00:00Z",
+          "details": "In this fictional scenario, update Demo Camera C900 from 1.0.0 or 1.1.0 to 1.2.0 during a maintenance window. Back up configuration, verify the installed version after the update, and confirm normal operation. The linked URL is a placeholder, not a download service.",
+          "product_ids": [
+            "DEMO-2026-009-1.0.0",
+            "DEMO-2026-009-1.1.0"
+          ],
+          "restart_required": {
+            "category": "machine",
+            "details": "A simulated device or application restart is required after the update."
+          },
+          "url": "https://example.com/csaf/demo-camera/release-1.2.0"
+        },
+        {
+          "category": "workaround",
+          "details": "Disable support-account log exports and limit log access to trusted administrators. This reduces exposure but does not replace the fictional software fix.",
+          "product_ids": [
+            "DEMO-2026-009-1.0.0",
+            "DEMO-2026-009-1.1.0"
+          ]
+        },
+        {
+          "category": "mitigation",
+          "details": "Restrict service access to trusted networks, monitor unexpected service activity, and review administrative access until the simulated update is complete.",
+          "product_ids": [
+            "DEMO-2026-009-1.0.0",
+            "DEMO-2026-009-1.1.0"
+          ]
+        }
+      ],
+      "references": [
+        {
+          "category": "self",
+          "summary": "Synthetic issue record (placeholder only)",
+          "url": "https://example.com/csaf/demo-camera/issue-01"
+        }
+      ],
+      "acknowledgments": [
+        {
+          "organization": "Fictional Demo Research Team",
+          "summary": "Synthetic discovery attribution for demonstration purposes."
+        }
+      ]
+    }
+  ]
+}

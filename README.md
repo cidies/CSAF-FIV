@@ -230,6 +230,10 @@ The corresponding HTML index is available at:
 
 https://u-blox.csaf-provider.com/.well-known/csaf/white/csaf-feed-tlp-white.html
 
+https://ifm.csaf-tp.certvde.com/.well-known/csaf/white/csaf-feed-tlp-white.json
+
+https://wid.cert-bund.de/.well-known/csaf/white/bsi-white.json
+
 The u-blox deployment demonstrates how the viewer can be integrated into an existing CSAF provider environment.
 
 This example does not imply that u-blox maintains or endorses this open-source project.

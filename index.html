@@ -1,0 +1,471 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSAF Feed Index Viewer</title>
+  <style>
+    :root {
+      --primary: #2c2c2c;
+      --secondary: #007da8;
+      --page: #f5f5f5;
+      --line: #ddd;
+      --muted: #666;
+    }
+
+    body {
+      font-family: "Noto Sans", Arial, sans-serif;
+      line-height: 1.5;
+      margin: 0;
+      background: var(--page);
+      color: var(--primary);
+    }
+
+    header {
+      padding: 24px 32px;
+      background: white;
+      border-bottom: 1px solid var(--line);
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 24px auto;
+      padding: 32px;
+      background: white;
+      border: 1px solid var(--line);
+    }
+
+    h1 {
+      border-left: 4px solid var(--secondary);
+      padding-left: 15px;
+      font-size: 28px;
+    }
+
+    .description {
+      color: var(--muted);
+    }
+
+    .meta {
+      background: #f9f9f9;
+      border-left: 4px solid var(--secondary);
+      padding: 16px;
+      margin: 20px 0;
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid var(--line);
+      font: inherit;
+    }
+
+    input:focus {
+      outline: 2px solid var(--secondary);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      background: var(--primary);
+      color: white;
+    }
+
+    th.sortable {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    th.sortable:hover {
+      background: #444;
+    }
+
+    tr:hover {
+      background: #f1f9fc;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      background: #e5f4fa;
+      color: #005f80;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    .id {
+      font-family: monospace;
+      font-size: 0.9em;
+      overflow-wrap: anywhere;
+    }
+
+    a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .actions a {
+      margin-right: 16px;
+    }
+
+    .error {
+      padding: 16px;
+      background: #fee2e2;
+      color: #991b1b;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 720px) {
+      header {
+        padding: 20px;
+      }
+
+      main {
+        margin: 12px;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 23px;
+      }
+
+      th, td {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>CSAF Feed Index Viewer</header>
+
+  <main>
+    <h1>CSAF Security Advisories</h1>
+
+    <p class="description">
+      Browse and search CSAF security advisories
+      from a configured provider feed.
+    </p>
+
+    <div id="meta" class="meta" aria-live="polite">
+      Loading CSAF feed...
+    </div>
+
+    <div id="error"></div>
+
+    <input
+      id="search"
+      type="search"
+      placeholder="Search title, document ID or date..."
+      aria-label="Filter advisories"
+      disabled
+    >
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="sortable" data-sort="timestamp">
+              Updated <span class="sort-icon">▼</span>
+            </th>
+            <th class="sortable" data-sort="title">
+              Advisory Title <span class="sort-icon">⇅</span>
+            </th>
+            <th class="sortable" data-sort="id">
+              Document ID <span class="sort-icon">⇅</span>
+            </th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="results">
+          <tr>
+            <td colspan="4">Loading data...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <script>
+    "use strict";
+
+    // CONFIGURATION
+    const CONFIG = {
+      feedUrl:
+        "https://u-blox.csaf-provider.com/.well-known/csaf/white/csaf-feed-tlp-white.json",
+
+      // Set true only when the provider publishes matching
+      // .html documents alongside its .json documents.
+      htmlLinks: true
+    };
+
+    let entries = [];
+    let sortColumn = "timestamp";
+    let sortAscending = false;
+
+    const elements = {
+      meta: document.getElementById("meta"),
+      error: document.getElementById("error"),
+      search: document.getElementById("search"),
+      results: document.getElementById("results")
+    };
+
+    function safeUrl(value) {
+      try {
+        const url = new URL(value, CONFIG.feedUrl);
+        return url.protocol === "https:" ? url.href : null;
+      } catch {
+        return null;
+      }
+    }
+
+    function formatDate(value) {
+      if (!value) return "Unknown";
+
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return "Unknown";
+
+      return date.toLocaleString("en-GB");
+    }
+
+    function getJsonUrl(entry) {
+      let value = entry.content?.src;
+
+      if (!value && Array.isArray(entry.link)) {
+        const link = entry.link.find(
+          item => item.rel === "self" || !item.rel
+        );
+        value = link?.href;
+      }
+
+      return value ? safeUrl(value) : null;
+    }
+
+    function getHtmlUrl(jsonUrl) {
+      if (!CONFIG.htmlLinks || !jsonUrl) return null;
+
+      const url = new URL(jsonUrl);
+
+      if (!/\.json$/i.test(url.pathname)) return null;
+
+      url.pathname = url.pathname.replace(/\.json$/i, ".html");
+      return url.href;
+    }
+
+    function createCell(row, value, className) {
+      const cell = document.createElement("td");
+
+      if (className) {
+        const span = document.createElement("span");
+        span.className = className;
+        span.textContent = value;
+        cell.appendChild(span);
+      } else {
+        cell.textContent = value;
+      }
+
+      row.appendChild(cell);
+      return cell;
+    }
+
+    function addLink(cell, label, url) {
+      if (!url) return;
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.textContent = label;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      cell.appendChild(link);
+    }
+
+    function render() {
+      const term = elements.search.value.toLowerCase().trim();
+
+      const filtered = entries.filter(item =>
+        !term ||
+        item.title.toLowerCase().includes(term) ||
+        item.id.toLowerCase().includes(term) ||
+        item.date.toLowerCase().includes(term)
+      );
+
+      filtered.sort((a, b) => {
+        const x = a[sortColumn];
+        const y = b[sortColumn];
+
+        const comparison =
+          typeof x === "number"
+            ? x - y
+            : String(x).localeCompare(String(y), "en", {
+                sensitivity: "base"
+              });
+
+        return sortAscending ? comparison : -comparison;
+      });
+
+      document.querySelectorAll("th.sortable").forEach(th => {
+        const active = th.dataset.sort === sortColumn;
+        const icon = th.querySelector(".sort-icon");
+
+        icon.textContent = active
+          ? (sortAscending ? "▲" : "▼")
+          : "⇅";
+      });
+
+      elements.results.replaceChildren();
+
+      if (filtered.length === 0) {
+        const row = document.createElement("tr");
+        createCell(row, "No matching advisories found.");
+        row.firstChild.colSpan = 4;
+        elements.results.appendChild(row);
+        return;
+      }
+
+      const fragment = document.createDocumentFragment();
+
+      filtered.forEach(item => {
+        const row = document.createElement("tr");
+
+        createCell(row, item.date, "badge");
+        createCell(row, item.title);
+        createCell(row, item.id, "id");
+
+        const actions = document.createElement("td");
+        actions.className = "actions";
+
+        addLink(actions, "HTML", item.htmlUrl);
+        addLink(actions, "JSON", item.jsonUrl);
+
+        if (!actions.childNodes.length) {
+          actions.textContent = "Unavailable";
+        }
+
+        row.appendChild(actions);
+        fragment.appendChild(row);
+      });
+
+      elements.results.appendChild(fragment);
+    }
+
+    async function loadFeed() {
+      elements.error.replaceChildren();
+
+      try {
+        const response = await fetch(CONFIG.feedUrl, {
+          headers: { Accept: "application/json" }
+        });
+
+        if (!response.ok) {
+          throw new Error(
+            `Feed request failed: HTTP ${response.status}`
+          );
+        }
+
+        const data = await response.json();
+
+        if (!data?.feed || !Array.isArray(data.feed.entry)) {
+          throw new Error(
+            "Invalid feed: expected feed.entry array."
+          );
+        }
+
+        entries = data.feed.entry.map(entry => {
+          const jsonUrl = getJsonUrl(entry);
+          const timestamp = Date.parse(entry.updated);
+
+          return {
+            timestamp: Number.isFinite(timestamp)
+              ? timestamp
+              : 0,
+            date: formatDate(entry.updated),
+            title: String(entry.title ?? "No title"),
+            id: String(entry.id ?? "N/A"),
+            jsonUrl,
+            htmlUrl: getHtmlUrl(jsonUrl)
+          };
+        });
+
+        const feedTitle = String(
+          data.feed.title ?? "CSAF Provider Feed"
+        );
+
+        elements.meta.replaceChildren();
+
+        const title = document.createElement("strong");
+        title.textContent = feedTitle;
+
+        const details = document.createElement("div");
+        details.textContent =
+          `Last updated: ${formatDate(data.feed.updated)} | ` +
+          `Documents: ${entries.length}`;
+
+        elements.meta.append(title, details);
+
+        elements.search.disabled = false;
+        render();
+
+      } catch (error) {
+        console.error(error);
+
+        elements.meta.textContent = "Feed unavailable.";
+
+        const message = document.createElement("div");
+        message.className = "error";
+        message.textContent =
+          `Could not load CSAF feed: ${error.message}. ` +
+          "Check the URL, network connectivity and CORS policy.";
+
+        elements.error.replaceChildren(message);
+
+        elements.results.replaceChildren();
+
+        const row = document.createElement("tr");
+        const cell = createCell(row, "Loading failed.");
+        cell.colSpan = 4;
+        elements.results.appendChild(row);
+      }
+    }
+
+    elements.search.addEventListener("input", render);
+
+    document.querySelectorAll("th.sortable").forEach(th => {
+      th.addEventListener("click", () => {
+        const column = th.dataset.sort;
+
+        if (sortColumn === column) {
+          sortAscending = !sortAscending;
+        } else {
+          sortColumn = column;
+          sortAscending = column !== "timestamp";
+        }
+
+        render();
+      });
+    });
+
+    loadFeed();
+  </script>
+</body>
+</html>
